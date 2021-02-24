@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<head>
+    <style>
+img {
+  float: right;
+}
+</style>
+</head>
+<body>
+<h2>El tiempo para el proximo torneo en:</h2>
+
+<table>
+            <tr>
+                <td><form action="/my-handling-form-page" method="post">
+        <ul>
+           
+          
+
+        </ul>
+    </form></td>
+                <td><form action="/my-handling-form-page" method="post">
+        <ul>
+            <div class="container my-5 text-center">
+
+                <button class ="btn btn-danger w-100" onclick="traerM()" >EL tiempo para el torneo de hoy en Madrid</button>
+                <p></p>
+                <button class ="btn btn-danger w-100" onclick="traerB()" >EL tiempo para el torneo de hoy en Barcelona</button>
+                  <p></p>
+                <button class ="btn btn-danger w-100" onclick="traerS()" >EL tiempo para el torneo de hoy en Sevilla</button>
+                 <p></p>
+           
+                <div class="mt5" id="contenido">
+                  
+                </div>  
+
+             </div>  
+        <script>
+            var contenido=document.querySelector('#contenido')
+            function traerB()
+            {
+                fetch('https://www.el-tiempo.net/api/json/v2/provincias/08')
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    contenido.innerHTML=`
+                    <img src=" img/barcelona.jpg" style='width:50%'/>
+                    <p>Pronostico para hoy: ${data.today.p}<p/>
+                    `
+
+                })
+
+            }
+            
+        </script>
+
+          <script>
+            var contenido=document.querySelector('#contenido')
+            function traerM()
+            {
+                fetch('https://www.el-tiempo.net/api/json/v2/provincias/28')
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    contenido.innerHTML=`
+                    <img src=" img/madrid.jpg" style='width:50%'/>
+                    <p>Pronostico para hoy: ${data.today.p}<p/>
+                    `
+
+                })
+
+            }
+            
+        </script>
+
+
+          <script>
+            var contenido=document.querySelector('#contenido')
+            function traerS()
+            {
+                fetch('https://www.el-tiempo.net/api/json/v2/provincias/41')
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    contenido.innerHTML=`
+                    <img src=" img/sevilla.jpg" style='width:50%'/>
+                    <p>Pronostico para hoy: ${data.today.p}<p/>
+                    `
+
+                })
+
+            }
+            
+        </script>
+
+        </ul>
+
+         </form></td>
+                <td><form action="/my-handling-form-page" method="post">
+        <ul>
+            
+ 
+        </ul>
+    </form></td>
+            </tr>
+
+
+        </table>
+
+    
+
+</body>
+</html>
